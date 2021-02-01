@@ -1,40 +1,9 @@
-# Boilermaker
+# Landis Dashboard
 
-_Good things come in pairs_
+# Readme in Progress
 
-Looking to mix up a backend with `express`/`sequelize` and a frontend with
-`react`/`redux`? That's `boilermaker`!
-
-Follow along with the boilerplate workshop to make your own! This canonical
-version can serve as a reference, or a starting point. For an in depth
-discussion into the code that makes up this repository, see the
-[Boilermaker Guided Tour][boilermaker-yt]
-
-[boilermaker-yt]: https://www.youtube.com/playlist?list=PLx0iOsdUOUmn7D5XL4mRUftn8hvAJGs8H
-
-## Setup
-
-To use this as boilerplate, you'll need to take the following steps:
-
-* Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine)
-* Run the following commands:
-
-```
-git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
-git fetch boilermaker
-git merge boilermaker/master
-```
-
-Why did we do that? Because every once in a while, `boilermaker` may
-be updated with additional features or bug fixes, and you can easily
-get those changes from now on by entering:
-
-```
-git fetch boilermaker
-git merge boilermaker/master
-```
+This is an app that allows users to see a dashboard of accounts and an data summary
+of those accounts.
 
 ## Customize
 
@@ -77,22 +46,6 @@ process.env.GOOGLE_CALLBACK = '/auth/google/callback'
 
 [google-apis]: https://console.developers.google.com/apis/credentials
 
-## Linting
-
-Linters are fundamental to any project. They ensure that your code
-has a consistent style, which is critical to writing readable code.
-
-Boilermaker comes with a working linter (ESLint, with
-`eslint-config-fullstack`) "out of the box." However, everyone has
-their own style, so we recommend that you and your team work out yours
-and stick to it. Any linter rule that you object to can be "turned
-off" in `.eslintrc.json`. You may also choose an entirely different
-config if you don't like ours:
-
-* [Standard style guide](https://standardjs.com/)
-* [Airbnb style guide](https://github.com/airbnb/javascript)
-* [Google style guide](https://google.github.io/styleguide/jsguide.html)
-
 ## Start
 
 Running `npm run start-dev` will make great things happen!
@@ -133,61 +86,6 @@ The steps below are also covered in the CI/CD workshop.
   1.  `heroku git:remote your-app-name` You'll need to be a
       collaborator on the app.
 
-### Travis
-
-_**NOTE**_ that this step assumes that Travis-CI is already testing your code.
-Continuous Integration is not about testing per se – it's about _continuously
-integrating_ your changes into the live application, instead of periodically
-_releasing_ new versions. CI tools can not only test your code, but then
-automatically deploy your app. This is known as Continuous Deployment.
-Boilermaker comes with a `.travis.yml` configuration almost ready for
-continuous deployment; follow these steps to the job.
-
-1.  Run the following commands to create a new branch:
-
-```
-git checkout master
-git pull
-git checkout -b f/travis-deploy
-```
-
-2.  Run the following script to finish configuring `travis.yml` :
-    `npm run heroku-token`
-    This will use your `heroku` CLI (that you configured previously, if
-    not then see [above](#Heroku)) to generate an authentication token. It
-    will then use `openssl` to encrypt this token using a public key that
-    Travis has generated for you. It will then update your `.travis.yml`
-    file with the encrypted value to be sent with the `secure` key under
-    the `api_key`.
-3.  Run the following commands to commit these changes
-
-```
-git add .travis.yml
-git commit -m 'travis: activate deployment'
-git push -u origin f/travis-deploy
-```
-
-4.  Make a Pull Request for the new branch, get it approved, and merge it into
-    the master branch.
-
-_**NOTE**_ that this script depends on your local `origin` Git remote matching
-your GitHub URL, and your local `heroku` remote matching the name of your
-Heroku app. This is only an issue if you rename your GitHub organization,
-repository name or Heroku app name. You can update these values using
-`git remote` and its related commands.
-
-#### Travis CLI
-
-There is a procedure to complete the above steps by installing the official
-[Travis CLI tools][travis-cli]. This requires a recent Ruby, but this step
-should not be, strictly speaking, necessary. Only explore this option when the
-above has failed.
-
-[travis-cli]: https://github.com/travis-ci/travis.rb#installation
-
-That's it! From now on, whenever `master` is updated on GitHub, Travis
-will automatically push the app to Heroku for you.
-
 ### Cody's own deploy script
 
 Your local copy of the application can be pushed up to Heroku at will,
@@ -214,12 +112,3 @@ using Boilermaker's handy deployment script:
     `deploy` branch to the `master` branch on `heroku`
     _ `git checkout master`: return to your master branch
     _ `git branch -D deploy`: remove the deploy branch
-
-Now, you should be deployed!
-
-Why do all of these steps? The big reason is because we don't want our
-production server to be cluttered up with dev dependencies like
-`webpack`, but at the same time we don't want our development
-git-tracking to be cluttered with production build files like
-`bundle.js`! By doing these steps, we make sure our development and
-production environments both stay nice and clean!
