@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {deleteClient} from '../store/client'
 import {Link} from 'react-router-dom'
+import {Popup} from 'reactjs-popup'
+import UpdateClient from './update-client'
 
 /**
  * COMPONENT
@@ -16,21 +18,31 @@ const SingleClient = props => {
   return (
     <div id="singleCard">
       <div id="images">
-        <img src={props.picture} />
+        <img alt="profile" src={props.picture} />
         <img src="https://i.stack.imgur.com/TLLAO.png" />
       </div>
       <div id="info">
         <p>
-          Name: {props.name_first} {props.name_last}
+          {props.name_first} {props.name_last}
         </p>
-        <p>Email: {props.email}</p>
-        <p>Phone: {props.phone}</p>
-        <div id="singleCardButtons">
-          <button>
-            {' '}
-            <Link to="/update">UPDATE</Link>
-          </button>
 
+        <a href={`mailto:${props.email}`}>{props.email}</a>
+        <p> {props.phone}</p>
+        <div id="singleCardButtons">
+          <Popup
+            id="popup"
+            trigger={<button> UPDATE</button>}
+            position="right center"
+          >
+            {/* will be update */}
+            <UpdateClient
+              id={props.id}
+              name_first={props.name_first}
+              name_last={props.name_last}
+              email={props.email}
+              phone={props.phone}
+            />
+          </Popup>
           <button value={props.id} onClick={deleteHandler} id="delete">
             DELETE
           </button>

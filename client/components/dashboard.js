@@ -7,11 +7,31 @@ import SingleClient from './single-client'
  * COMPONENT
  */
 class Dashboard extends React.Component {
+  constructor() {
+    super()
+    this.orderByName = this.orderByName.bind(this)
+  }
+
   async componentDidMount() {
     await this.props.getClients()
   }
 
+  orderByName(accounts) {
+    accounts.sort(function(a, b) {
+      var nameA = a.name_last.toUpperCase()
+      var nameB = b.name_last.toUpperCase()
+      if (nameA < nameB) {
+        return -1
+      }
+      if (nameA > nameB) {
+        return 1
+      }
+      return 0
+    })
+  }
+
   render() {
+    this.orderByName(this.props.clients)
     return (
       <div id="cardContainer">
         {this.props.clients ? (

@@ -131,3 +131,23 @@ form {
 input {
   font-family: 'Montserrat';
 }
+
+.popup-content {
+  width: 75%;
+}
+
+#dataContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+#dataDiv {
+  background-color: #acd3df;
+  width: 30%;
+  height: 75vh;
+  opacity: 0.75;
+}
+
+#dataDiv:hover {
+  opacity: 1;
+}

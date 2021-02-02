@@ -19,8 +19,8 @@ async function seed() {
   let newData = parseData(json)
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({email: 'cody@email.com', password: 'a7e!r3'}),
+    User.create({email: 'murphy@email.com', password: 'mp8%hb2'})
   ])
 
   for (let i = 0; i < newData.length; i++) {

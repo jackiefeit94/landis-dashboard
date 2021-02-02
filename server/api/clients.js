@@ -25,7 +25,8 @@ router.put('/:id', async (req, res, next) => {
     const client = await Client.findByPk(req.params.id)
     await client.update(req.body)
     await client.save()
-    res.json(client)
+    const clients = await Client.findAll()
+    res.json(clients)
   } catch (err) {
     next(err)
   }

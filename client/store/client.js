@@ -19,7 +19,7 @@ const clients = []
  */
 export const getClients = clients => ({type: 'GET_CLIENTS', clients})
 const addClient = client => ({type: ADD_CLIENT, client})
-const updateClient = client => ({type: UPDATE_CLIENT, client})
+const updateClient = clients => ({type: UPDATE_CLIENT, clients})
 const removeClient = clients => ({type: REMOVE_CLIENT, clients})
 
 /**
@@ -40,6 +40,13 @@ export const postClient = client => {
   }
 }
 
+export const putClient = (id, updatedInfo) => {
+  return async dispatch => {
+    const {data} = await axios.put(`/api/clients/${id}`, updatedInfo)
+    return dispatch(updateClient(data))
+  }
+}
+
 export const deleteClient = id => {
   return async dispatch => {
     const {data} = await axios.delete(`/api/clients/${id}`)
@@ -54,10 +61,12 @@ export default function(state = clients, action) {
   switch (action.type) {
     case GET_CLIENTS:
       return [...action.clients]
-    case REMOVE_CLIENT:
+    case UPDATE_CLIENT:
       return [...action.clients]
     case ADD_CLIENT:
       return [...state, action.client]
+    case REMOVE_CLIENT:
+      return [...action.clients]
     default:
       return state
   }
