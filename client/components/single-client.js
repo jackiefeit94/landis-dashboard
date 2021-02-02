@@ -4,6 +4,7 @@ import {deleteClient} from '../store/client'
 import {Link} from 'react-router-dom'
 import {Popup} from 'reactjs-popup'
 import UpdateClient from './update-client'
+import Progress from './progress'
 
 /**
  * COMPONENT
@@ -19,7 +20,8 @@ const SingleClient = props => {
     <div id="singleCard">
       <div id="images">
         <img alt="profile" src={props.picture} />
-        <img src="https://i.stack.imgur.com/TLLAO.png" />
+        {/* <img src="https://i.stack.imgur.com/TLLAO.png" /> */}
+        <Progress id={props.id} progress={props.progress} />
       </div>
       <div id="info">
         <p>

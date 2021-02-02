@@ -45,6 +45,7 @@ class Dashboard extends React.Component {
                 email={client.email}
                 phone={client.phone}
                 picture={client.picture}
+                progress={client.progress}
               />
             )
           })

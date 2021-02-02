@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 /**
@@ -10,9 +9,9 @@ export const Overview = props => {
     <div>
       <h3>Overview Page!</h3>
       <div id="dataContainer">
-        <div id="dataDiv"> Data 1</div>
-        <div id="dataDiv"> Data 2</div>
-        <div id="dataDiv"> Data 3</div>
+        <div id="dataDiv">3 Pie Charts (credit, balance, progress)</div>
+        <div id="dataDiv">Bar graph (clients by state)</div>
+        <div id="dataDiv">Scatter plot (credit v balance)</div>
       </div>
     </div>
   )

@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const client = await Client.findOne({where: {id: req.params.id}})
+    res.json(client)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
     const client = await Client.create(req.body)

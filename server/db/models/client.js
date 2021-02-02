@@ -44,6 +44,17 @@ const Client = db.define('client', {
   },
   tags: {
     type: Sequelize.ARRAY(Sequelize.STRING)
+  },
+  progress: {
+    type: Sequelize.VIRTUAL,
+    get() {
+      //find balance percentage out of 20K- highest in dataset
+      let balance = Math.ceil(Number(this.balance)) / 20000 * 100
+      //find credit score percentage out of highest possible
+      let creditStatus = Math.ceil(this.credit / 850) * 100
+      //average those 2 values
+      return Math.ceil((balance + creditStatus) / 2)
+    }
   }
 })
 
