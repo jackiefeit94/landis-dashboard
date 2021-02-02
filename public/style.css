@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Montserrat';
   background-image: url('background.png');
   background-size: auto;
 }
@@ -15,9 +17,57 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+  padding: 0.5em;
+  text-decoration: none;
+  color: black;
+  background-color: #ebeaea;
+}
+
+nav a:hover {
+  background-color: #534949;
+  color: white;
+}
+
+#nav {
+  background-color: #c4c4c4;
 }
 
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+#cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#singleCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #acd3df;
+  width: 22%;
+  height: 80%;
+  margin: 2em;
+  opacity: 0.75;
+}
+
+#singleCard:hover {
+  opacity: 1;
+}
+
+#info {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+#images {
+  display: flex;
+}
+
+img {
+  width: 50%;
+  height: auto;
 }

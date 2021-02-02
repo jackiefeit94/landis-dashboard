@@ -2,17 +2,31 @@
 
 const db = require('../server/db')
 const {User} = require('../server/db/models')
+const {Client} = require('../server/db/models')
+const json = require('./data.js')
+
+function parseData(data) {
+  let newData = []
+  for (let i = 0; i < data.length; i++) {
+    newData.push(JSON.parse(data[i]))
+  }
+  return newData
+}
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
+  let newData = parseData(json)
 
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  console.log(`seeded ${users.length} users`)
+  for (let i = 0; i < newData.length; i++) {
+    await Client.create(newData[i])
+  }
+
   console.log(`seeded successfully`)
 }
 
