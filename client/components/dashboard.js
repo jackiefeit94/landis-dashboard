@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchClients} from '../store/client'
-import {SingleClient} from './single-client'
+import SingleClient from './single-client'
 
 /**
  * COMPONENT
@@ -16,10 +16,10 @@ class Dashboard extends React.Component {
       <div id="cardContainer">
         {this.props.clients ? (
           this.props.clients.map(client => {
-            // replace with single card
             return (
               <SingleClient
                 key={client.id}
+                id={client.id}
                 name_first={client.name_first}
                 name_last={client.name_last}
                 email={client.email}

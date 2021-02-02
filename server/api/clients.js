@@ -33,9 +33,10 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const client = await Client.findByPk(req.params.id)
+    const client = await Client.findOne({where: {id: req.params.id}})
     await client.destroy()
-    res.json(client)
+    const clients = await Client.findAll()
+    res.json(clients)
   } catch (err) {
     next(err)
   }

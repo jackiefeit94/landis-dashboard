@@ -57,6 +57,12 @@ form div {
   opacity: 1;
 }
 
+#singleCardButtons {
+  display: flex;
+  margin: 0.5em;
+  justify-content: space-around;
+}
+
 #info {
   display: flex;
   flex-direction: column;
@@ -70,4 +76,58 @@ form div {
 img {
   width: 50%;
   height: auto;
+}
+
+#loggedInNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-family: 'Montserrat';
+  background-color: #ebeaea;
+  color: black;
+  border: none;
+}
+
+button:hover {
+  font-family: 'Montserrat';
+  background-color: #534949;
+  color: white;
+  border: none;
+}
+#delete:hover {
+  background-color: #d88d8d;
+}
+
+#form {
+}
+
+form {
+  justify-content: center;
+  padding: 2em;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+#formContainer {
+  /* justify-content: center; */
+  margin: 5em;
+  background-color: #ebeaea;
+  opacity: 0.8;
+  width: 20%;
+  height: 80%;
+}
+
+#submit {
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+}
+
+input {
+  font-family: 'Montserrat';
 }

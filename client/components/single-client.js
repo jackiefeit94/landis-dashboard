@@ -1,9 +1,18 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {deleteClient} from '../store/client'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
  */
-export const SingleClient = props => {
+const SingleClient = props => {
+  const deleteHandler = async event => {
+    event.preventDefault()
+    const id = event.target.value
+    await props.removeClient(id)
+  }
+
   return (
     <div id="singleCard">
       <div id="images">
@@ -12,11 +21,31 @@ export const SingleClient = props => {
       </div>
       <div id="info">
         <p>
-          NAME: {props.name_first} {props.name_last}
+          Name: {props.name_first} {props.name_last}
         </p>
-        <p>EMAIL: {props.email}</p>
-        <p>PHONE: {props.phone}</p>
+        <p>Email: {props.email}</p>
+        <p>Phone: {props.phone}</p>
+        <div id="singleCardButtons">
+          <button>
+            {' '}
+            <Link to="/update">UPDATE</Link>
+          </button>
+
+          <button value={props.id} onClick={deleteHandler} id="delete">
+            DELETE
+          </button>
+        </div>
       </div>
     </div>
   )
 }
+
+const mapDispatch = dispatch => {
+  return {
+    removeClient: id => {
+      dispatch(deleteClient(id))
+    }
+  }
+}
+
+export default connect(null, mapDispatch)(SingleClient)
