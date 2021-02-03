@@ -2,8 +2,7 @@ import React from 'react'
 import Form from './add-update-form'
 import {postClient} from '../store/client'
 import {connect} from 'react-redux'
-import {ToastContainer, toast} from 'react-toastify'
-//import 'react-toastify/dist/ReactToastify.css'
+import swal from 'sweetalert'
 
 class AddClient extends React.Component {
   constructor() {
@@ -18,11 +17,6 @@ class AddClient extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.generateId = this.generateId.bind(this)
-    this.notify = this.notify.bind(this)
-  }
-
-  notify() {
-    toast('You successfully added a client!')
   }
 
   generateId() {
@@ -44,8 +38,17 @@ class AddClient extends React.Component {
     event.preventDefault()
     await this.generateId()
     await this.props.addClient(this.state)
-    this.setState({name_first: '', name_last: '', email: '', phone: '', id: ''})
-    this.notify()
+    this.setState({
+      name_first: '',
+      name_last: '',
+      email: '',
+      phone: '',
+      id: ''
+    })
+    swal('You successfully added a new client.', {
+      button: 'OK',
+      icon: 'success'
+    })
   }
 
   handleChange(event) {
@@ -62,7 +65,7 @@ class AddClient extends React.Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
-        <ToastContainer />
+        )
       </div>
     )
   }

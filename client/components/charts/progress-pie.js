@@ -12,7 +12,6 @@ export const ProgressPie = props => {
         data={props.data}
         style={{labels: {fontSize: 20}}}
         padding={30}
-        //labelPosition={({index}) => 'endAngle'}
       />
     </svg>
   )

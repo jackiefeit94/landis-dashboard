@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {Popup} from 'reactjs-popup'
 import UpdateClient from './update-client'
 import Progress from './charts/progress'
+import swal from 'sweetalert'
 
 /**
  * COMPONENT
@@ -13,7 +14,24 @@ const SingleClient = props => {
   const deleteHandler = async event => {
     event.preventDefault()
     const id = event.target.value
-    await props.removeClient(id)
+    await swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this client.',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true
+    }).then(willDelete => {
+      if (willDelete) {
+        props.removeClient(id)
+        swal('Your client has been deleted.', {
+          icon: 'success'
+        })
+      } else {
+        swal('Your client has not been deleted.')
+      }
+    })
+
+    //await props.removeClient(id)
   }
 
   return (

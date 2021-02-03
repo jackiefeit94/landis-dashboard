@@ -2,6 +2,7 @@ import React from 'react'
 import Form from './add-update-form'
 import {putClient} from '../store/client'
 import {connect} from 'react-redux'
+import swal from 'sweetalert'
 
 class UpdateClient extends React.Component {
   constructor() {
@@ -10,7 +11,8 @@ class UpdateClient extends React.Component {
       name_first: '',
       name_last: '',
       email: '',
-      phone: ''
+      phone: '',
+      updated: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -27,7 +29,17 @@ class UpdateClient extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     await this.props.updateClient(this.props.id, this.state)
-    this.setState({name_first: '', name_last: '', email: '', phone: ''})
+    this.setState({
+      name_first: '',
+      name_last: '',
+      email: '',
+      phone: '',
+      updated: true
+    })
+    swal('You successfully updated this client.', {
+      button: 'OK',
+      icon: 'success'
+    })
   }
 
   handleChange(event) {
@@ -39,11 +51,15 @@ class UpdateClient extends React.Component {
   render() {
     return (
       <div id="formContainer">
-        <Form
-          state={this.state}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
+        {!this.state.updated ? (
+          <Form
+            state={this.state}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+          />
+        ) : (
+          <div />
+        )}
       </div>
     )
   }

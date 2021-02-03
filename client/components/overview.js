@@ -85,7 +85,7 @@ class Overview extends React.Component {
       for (let key in regions) {
         let ele = regions[key]
         for (let i = 0; i < ele.length; i++) {
-          if (curr.includes(ele[i])) {
+          if (curr && curr.includes(ele[i])) {
             barRegions[key]++
           }
         }
