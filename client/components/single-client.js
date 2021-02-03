@@ -4,7 +4,7 @@ import {deleteClient} from '../store/client'
 import {Link} from 'react-router-dom'
 import {Popup} from 'reactjs-popup'
 import UpdateClient from './update-client'
-import Progress from './progress'
+import Progress from './charts/progress'
 
 /**
  * COMPONENT

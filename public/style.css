@@ -144,12 +144,29 @@ input {
 }
 
 #dataDiv {
+  display: flex;
+  flex-direction: column;
   background-color: #acd3df;
   width: 30%;
   height: 75vh;
   opacity: 0.75;
+  margin: 1em;
 }
 
 #dataDiv:hover {
   opacity: 1;
+}
+
+#pies {
+  width: 33%;
+  height: 33%;
+}
+
+h2 {
+  padding: 1em;
+  background-color: #ebeaea;
+  margin: 1em;
+  width: 40%;
+  height: 5%;
+  font-size: medium;
 }
