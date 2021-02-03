@@ -3,15 +3,16 @@ import {VictoryPie} from 'victory'
 
 export const ProgressPie = props => {
   return (
-    <svg viewBox="0 0 300 300" width="100%" height="100%">
+    <svg viewBox="0 0 400 400" width="100%" height="100%">
       <VictoryPie
         colorScale={['tomato', 'orange', 'gold', 'cyan', 'navy']}
-        width={300}
-        height={300}
+        width={400}
+        height={400}
         standalone={false}
         data={props.data}
-        style={{labels: {fontSize: 15}}}
+        style={{labels: {fontSize: 20}}}
         padding={30}
+        //labelPosition={({index}) => 'endAngle'}
       />
     </svg>
   )

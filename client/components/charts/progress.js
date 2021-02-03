@@ -33,7 +33,7 @@ class Progress extends React.Component {
           style={{
             data: {
               fill: ({datum}) => {
-                const color = datum.y > 60 ? 'green' : 'red'
+                const color = datum.y > 60 ? '#83a182' : '#d88d8d'
                 return datum.x === 1 ? color : 'transparent'
               }
             }
@@ -44,7 +44,7 @@ class Progress extends React.Component {
           verticalAnchor="middle"
           x={200}
           y={200}
-          text={this.state.percent}
+          text={`${this.state.percent}%`}
           style={{fontSize: 45}}
         />
       </svg>

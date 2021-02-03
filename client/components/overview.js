@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchClients} from '../store/client'
 import {ProgressPie} from './charts/progress-pie'
 import {BarStates} from './charts/bar-states'
+import {regions} from '../regions.js'
 
 /**
  * COMPONENT
@@ -13,6 +14,7 @@ class Overview extends React.Component {
 
     this.findCredit = this.findCredit.bind(this)
     this.findBalance = this.findBalance.bind(this)
+    this.findClientsByRegion = this.findClientsByRegion.bind(this)
   }
 
   async componentDidMount() {
@@ -69,11 +71,38 @@ class Overview extends React.Component {
     return balance
   }
 
+  findClientsByRegion(data) {
+    let barRegions = {
+      northeast: 0,
+      southeast: 0,
+      southwest: 0,
+      midwest: 0,
+      west: 0
+    }
+    let finalBarData = []
+    for (let i = 0; i < data.length; i++) {
+      let curr = data[i].address
+      for (let key in regions) {
+        let ele = regions[key]
+        for (let i = 0; i < ele.length; i++) {
+          if (curr.includes(ele[i])) {
+            barRegions[key]++
+          }
+        }
+      }
+    }
+    for (let key in barRegions) {
+      finalBarData.push({x: key, y: barRegions[key]})
+    }
+    return finalBarData
+  }
+
   render() {
-    let credit, balance
+    let credit, balance, barData
     if (this.props.clients) {
       credit = this.findCredit(this.props.clients)
       balance = this.findBalance(this.props.clients)
+      barData = this.findClientsByRegion(this.props.clients)
     }
     console.log('balance: ', balance)
     return (
@@ -87,9 +116,10 @@ class Overview extends React.Component {
             <ProgressPie data={balance} id="pies" />
           </div>
           <div id="dataDiv">
-            <BarStates />
+            <h2>CLIENTS BY REGION</h2>
+            <BarStates data={barData} />
           </div>
-          <div id="dataDiv">Scatter plot (credit v balance)</div>
+          {/* <div id="dataDiv">Scatter plot (credit v balance)</div> */}
         </div>
       </div>
     )

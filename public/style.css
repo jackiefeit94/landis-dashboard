@@ -147,7 +147,7 @@ input {
   display: flex;
   flex-direction: column;
   background-color: #acd3df;
-  width: 30%;
+  width: 45%;
   height: 75vh;
   opacity: 0.75;
   margin: 1em;
@@ -155,11 +155,6 @@ input {
 
 #dataDiv:hover {
   opacity: 1;
-}
-
-#pies {
-  width: 33%;
-  height: 33%;
 }
 
 h2 {
