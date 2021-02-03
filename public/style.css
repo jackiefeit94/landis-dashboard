@@ -174,8 +174,8 @@ h2 {
   display: flex;
   flex-direction: column;
   background-color: #acd3df;
-  width: 45%;
-  height: 69vh;
+  width: 25%;
+  height: 74vh;
   opacity: 0.75;
   margin: 1em;
 }
@@ -196,14 +196,14 @@ h2 {
   display: flex;
   flex-direction: column;
   background-color: #acd3df;
-  width: 45%;
-  height: 70vh;
+  width: 30%;
+  height: 100vh;
   opacity: 0.75;
   margin: 1em;
 }
 
 #homeImage {
-  width: 100%;
+  width: 98%;
   height: auto;
 }
 
@@ -220,4 +220,21 @@ h3 {
 #landis {
   padding: 5em;
   box-shadow: 7px 7px 7px rgb(33, 41, 110);
+}
+
+#search {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 0.5em;
+}
+#searchText {
+  width: 30%;
+  margin: 0.3em;
+  text-align: center;
+}
+#searchInput {
+  margin: 1em;
+  width: 30%;
+  height: 3em;
 }

@@ -9,11 +9,20 @@ import SingleClient from './single-client'
 class Dashboard extends React.Component {
   constructor() {
     super()
+    this.state = {
+      search: ''
+    }
     this.orderByName = this.orderByName.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.filter = this.filter.bind(this)
   }
 
   async componentDidMount() {
     await this.props.getClients()
+  }
+
+  handleChange(e) {
+    this.setState({search: e.target.value})
   }
 
   orderByName(accounts) {
@@ -30,28 +39,47 @@ class Dashboard extends React.Component {
     })
   }
 
+  filter(str, clients) {
+    let length = str.length
+    let newClients = clients.filter(client => {
+      let clientSlice = client.name_last.slice(0, length)
+      return clientSlice.toLowerCase() === str.toLowerCase()
+    })
+    return newClients
+  }
+
   render() {
-    this.orderByName(this.props.clients)
+    let clients
+    if (this.props.clients) {
+      clients = this.orderByName(this.props.clients)
+      clients = this.filter(this.state.search, this.props.clients)
+    }
     return (
-      <div className="cardContainer">
-        {this.props.clients ? (
-          this.props.clients.map(client => {
-            return (
-              <SingleClient
-                key={client.id}
-                id={client.id}
-                name_first={client.name_first}
-                name_last={client.name_last}
-                email={client.email}
-                phone={client.phone}
-                picture={client.picture}
-                progress={client.progress}
-              />
-            )
-          })
-        ) : (
-          <div />
-        )}
+      <div>
+        <div id="search">
+          <h2 id="searchText">SEARCH BY LAST NAME</h2>
+          <input onChange={this.handleChange} id="searchInput" />
+        </div>
+        <div className="cardContainer">
+          {this.props.clients ? (
+            clients.map(client => {
+              return (
+                <SingleClient
+                  key={client.id}
+                  id={client.id}
+                  name_first={client.name_first}
+                  name_last={client.name_last}
+                  email={client.email}
+                  phone={client.phone}
+                  picture={client.picture}
+                  progress={client.progress}
+                />
+              )
+            })
+          ) : (
+            <div />
+          )}
+        </div>
       </div>
     )
   }
