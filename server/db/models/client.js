@@ -14,7 +14,8 @@ const Client = db.define('client', {
   },
   picture: {
     type: Sequelize.TEXT,
-    defaultValue: ''
+    defaultValue:
+      'https://pbs.twimg.com/profile_images/580363037640536064/1GQH5xpY.jpg'
   },
   name_first: {
     type: Sequelize.STRING
