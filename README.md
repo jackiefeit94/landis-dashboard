@@ -1,7 +1,11 @@
 # Landis Dashboard
 
-This is a simple crud app that allows users to see a dashboard of clients and a data summary of those clients. You may sign up, or log in as an admin with the following credentials: username- cody@email.com
-pw- 123
+This is a simple crud app that allows users to see a dashboard of clients and a data summary of those clients. You may sign up with a valid email, or log in as an admin with the following credentials:
+
+```
+username- cody@email.com
+pw- a7e!r3
+```
 
 ## Setup
 

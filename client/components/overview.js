@@ -104,10 +104,8 @@ class Overview extends React.Component {
       balance = this.findBalance(this.props.clients)
       barData = this.findClientsByRegion(this.props.clients)
     }
-    console.log('balance: ', balance)
     return (
       <div>
-        <h3>Overview Page!</h3>
         <div id="dataContainer">
           <div id="dataDiv">
             <h2>CREDIT SCORES</h2>
@@ -119,7 +117,6 @@ class Overview extends React.Component {
             <h2>CLIENTS BY REGION</h2>
             <BarStates data={barData} />
           </div>
-          {/* <div id="dataDiv">Scatter plot (credit v balance)</div> */}
         </div>
       </div>
     )

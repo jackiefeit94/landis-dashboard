@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
   render() {
     this.orderByName(this.props.clients)
     return (
-      <div id="cardContainer">
+      <div className="cardContainer">
         {this.props.clients ? (
           this.props.clients.map(client => {
             return (
