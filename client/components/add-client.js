@@ -37,7 +37,8 @@ class AddClient extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     await this.generateId()
-    await this.props.addClient(this.state)
+    const added = await this.props.addClient(this.state)
+    console.log('added: ', added)
     this.setState({
       name_first: '',
       name_last: '',

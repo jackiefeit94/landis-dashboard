@@ -1,12 +1,27 @@
 import React from 'react'
 
 const Form = props => {
-  // const disable = () => {
-  // 	if (!props.state.title) {
-  // 		return true;
-  // 	}
-  // 	return false;
-  // };
+  function emailIsValid(email) {
+    return /\S+@\S+\.\S+/.test(email)
+  }
+
+  const disable = () => {
+    if (
+      !props.state.name_first ||
+      !props.state.name_last ||
+      !props.state.email ||
+      !props.state.phone
+    ) {
+      return true
+    } else if (props.state.phone.length !== 10) {
+      return true
+    } else if (isNaN(props.state.phone)) {
+      return true
+    } else if (!emailIsValid(props.state.email)) {
+      return true
+    }
+    return false
+  }
   return (
     <div id="form">
       <form onSubmit={props.handleSubmit}>
@@ -38,7 +53,7 @@ const Form = props => {
           value={props.state.phone}
           onChange={props.handleChange}
         />
-        <button id="submit" type="submit">
+        <button id="submit" type="submit" disabled={disable()}>
           SUBMIT
         </button>
       </form>
@@ -47,6 +62,3 @@ const Form = props => {
 }
 
 export default Form
-
-//on button
-//disabled={disable()}

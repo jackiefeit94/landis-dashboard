@@ -18,10 +18,14 @@ const Client = db.define('client', {
       'https://pbs.twimg.com/profile_images/580363037640536064/1GQH5xpY.jpg'
   },
   name_first: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    isEmpty: false
   },
   name_last: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    isEmpty: false
   },
   employer: {
     type: Sequelize.STRING
@@ -30,12 +34,14 @@ const Client = db.define('client', {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
+    isEmpty: false,
     validate: {
       isEmail: true
     }
   },
   phone: {
-    type: Sequelize.BIGINT
+    type: Sequelize.BIGINT,
+    allowNull: false
   },
   address: {
     type: Sequelize.TEXT
@@ -57,6 +63,11 @@ const Client = db.define('client', {
       return Math.ceil((balance + creditStatus) / 2)
     }
   }
+})
+
+Client.addHook('beforeCreate', 'beforeUpdate', (client, options) => {
+  if (String(client.phone).length !== 10)
+    return Promise.reject(new Error('Phone number must be 10 digits'))
 })
 
 module.exports = Client

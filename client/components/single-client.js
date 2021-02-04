@@ -30,15 +30,12 @@ const SingleClient = props => {
         swal('Your client has not been deleted.')
       }
     })
-
-    //await props.removeClient(id)
   }
 
   return (
     <div id="singleCard">
       <div id="images">
         <img alt="profile" src={props.picture} />
-        {/* <img src="https://i.stack.imgur.com/TLLAO.png" /> */}
         <Progress id={props.id} progress={props.progress} />
       </div>
       <div id="info">
@@ -54,7 +51,6 @@ const SingleClient = props => {
             trigger={<button> UPDATE</button>}
             position="right center"
           >
-            {/* will be update */}
             <UpdateClient
               id={props.id}
               name_first={props.name_first}
