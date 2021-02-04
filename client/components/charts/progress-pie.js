@@ -1,6 +1,7 @@
 import React from 'react'
 import {VictoryPie} from 'victory'
 
+//for both account balance and credit score
 export const ProgressPie = props => {
   return (
     <svg viewBox="0 0 400 400" width="100%" height="100%">

@@ -65,8 +65,8 @@ const Client = db.define('client', {
   }
 })
 
-Client.addHook('beforeCreate', 'beforeUpdate', (client, options) => {
-  if (String(client.phone).length !== 10)
+Client.addHook('beforeCreate', 'beforeUpdate', client => {
+  if (String(client.phone).length !== 10 || isNaN(client.phone))
     return Promise.reject(new Error('Phone number must be 10 digits'))
 })
 
