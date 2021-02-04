@@ -1,6 +1,6 @@
 # Landis Dashboard
 
-This is a simple crud app that allows users to see a dashboard of clients and a data summary of those clients. You may sign up with a valid email, or log in as an admin with the following credentials:
+This is a simple crud app (deployed [here](https://landis-dashboard-dev.herokuapp.com/)) that allows users to see a dashboard of clients and a data summary of those clients. You may sign up with a valid email, or log in as an admin with the following credentials:
 
 ```
 username- cody@email.com
